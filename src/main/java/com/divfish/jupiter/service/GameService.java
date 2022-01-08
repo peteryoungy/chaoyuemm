@@ -1,6 +1,6 @@
 package com.divfish.jupiter.service;
 
-import com.divfish.jupiter.model.Game;
+import com.divfish.jupiter.entity.response.Game;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.http.HttpEntity;
