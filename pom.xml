@@ -18,6 +18,15 @@
     </properties>
 
     <dependencies>
+
+<!--excrypted password-->
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.15</version>
+        </dependency>
+
+
 <!--hibernate-->
         <dependency>
             <groupId>org.springframework</groupId>
