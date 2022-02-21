@@ -25,6 +25,8 @@ public class FavoriteController {
 
     @RequestMapping(value = "/favorite", method = RequestMethod.POST)
     public void setFavoriteItem(@RequestBody FavoriteRequestBody requestBody, HttpServletRequest request, HttpServletResponse response) {
+
+        // att: if expire? return null?
         HttpSession session = request.getSession(false);
         if (session == null) {
             response.setStatus(HttpServletResponse.SC_FORBIDDEN);

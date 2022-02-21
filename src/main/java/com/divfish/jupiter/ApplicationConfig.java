@@ -16,7 +16,7 @@ public class ApplicationConfig {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        // make sure you add your own package name if your class is not under com.laioffer.jupiter.entity.db
+
         sessionFactory.setPackagesToScan("com.divfish.jupiter.entity.db");
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
@@ -25,9 +25,10 @@ public class ApplicationConfig {
     @Bean(name = "dataSource")
     public DataSource dataSource() {
 
-        String RDS_ENDPOINT = "rds-mysql-1.crelr6pvrmw6.us-east-2.rds.amazonaws.com";
-        String USERNAME = "admin";
-        String PASSWORD = "12345678Yy!";
+        // TODO: ADD ENDPOINTS, USERNAME PASSWORD
+        String RDS_ENDPOINT = "";
+        String USERNAME = "";
+        String PASSWORD = "";
 
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
@@ -40,7 +41,11 @@ public class ApplicationConfig {
 
     private final Properties hibernateProperties() {
         Properties hibernateProperties = new Properties();
+        // detect changes in Entity, Hibernate will sync the change
+        // when first launched, Hibernate will create the table
+        // "create-drop": drop if exists and create new
         hibernateProperties.setProperty("hibernate.hbm2ddl.auto", "update");
+
         hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL5InnoDBDialect");
         hibernateProperties.setProperty("hibernate.show_sql", "true");
         return hibernateProperties;

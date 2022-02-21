@@ -18,7 +18,7 @@ public class User implements Serializable {
 
     @Id
     @Column(name = "user_id")
-    @JsonProperty("user_id")
+    @JsonProperty("user_id")  // note: mapping frontend form name attribute
     private String userId;
 
     @JsonProperty("password")

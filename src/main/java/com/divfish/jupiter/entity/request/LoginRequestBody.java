@@ -7,6 +7,8 @@ public class LoginRequestBody {
     private final String userId;
     private final String password;
 
+    // why: why db POJO dont need constructor but here need?
+    //  because of use case?
     @JsonCreator
     public LoginRequestBody(@JsonProperty("user_id") String userId, @JsonProperty("password") String password) {
         this.userId = userId;

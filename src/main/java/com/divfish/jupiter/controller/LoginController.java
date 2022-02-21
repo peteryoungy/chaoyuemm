@@ -28,14 +28,21 @@ public class LoginController {
         // Create a new session for the user if user ID and password are correct, otherwise return Unauthorized error.
         if (!firstname.isEmpty()) {
             // Create a new session, put user ID as an attribute into the session object, and set the expiration time to 600 seconds.
+
+            // why: what is the session mean here?
+            //  keep the login status of user
+            //  session is saved in server end, return sessionId to frontend
             HttpSession session = request.getSession();
             session.setAttribute("user_id", requestBody.getUserId());
             session.setMaxInactiveInterval(600);
 
+            // note: no need to return, convenient for debug
             LoginResponseBody loginResponseBody = new LoginResponseBody(requestBody.getUserId(), firstname);
             response.setContentType("application/json;charset=UTF-8");
             response.getWriter().print(new ObjectMapper().writeValueAsString(loginResponseBody));
         } else {
+
+            // note: 401
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         }
     }

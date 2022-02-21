@@ -88,7 +88,6 @@ public class GameService {
     }
 
     // Convert JSON format data returned from Twitch to an Arraylist of Game objects
-
     private List<Game> getGameList(String data) throws TwitchException {
         ObjectMapper mapper = new ObjectMapper();
         try {
@@ -119,7 +118,7 @@ public class GameService {
 
     //
     // note: Search API: search by game name
-    //  return stream, clip, videp type
+    //  return stream, clip, video type
 
     // Similar to buildGameURL, build Search URL that will be used when calling Twitch API. e.g. https://api.twitch.tv/helix/clips?game_id=12924.
     private String buildSearchURL(String url, String gameId, int limit) {
@@ -147,6 +146,7 @@ public class GameService {
         List<Item> streams = getItemList(searchTwitch(buildSearchURL(STREAM_SEARCH_URL_TEMPLATE, gameId, limit)));
         for (Item item : streams) {
             item.setType(ItemType.STREAM);
+            // note: use this way to get access to a stream
             item.setUrl(TWITCH_BASE_URL + item.getBroadcasterName());
         }
         return streams;
@@ -186,7 +186,7 @@ public class GameService {
                 break;
         }
 
-        // Update gameId for all items. GameId is used by recommendation function
+        // note: Update gameId for all items. GameId is used by recommendation function
         for (Item item : items) {
             item.setGameId(gameId);
         }

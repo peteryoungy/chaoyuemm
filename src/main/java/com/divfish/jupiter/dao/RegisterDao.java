@@ -19,6 +19,7 @@ public class RegisterDao {
 
         try {
             session = sessionFactory.openSession();
+            // note: atomic operation between begin and commit
             session.beginTransaction();
             session.save(user);
             session.getTransaction().commit();

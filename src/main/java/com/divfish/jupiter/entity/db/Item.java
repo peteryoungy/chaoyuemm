@@ -26,12 +26,13 @@ public class Item implements Serializable {
     @JsonProperty("url")
     private String url;
 
-    @Column(name = "thumbnail_url")
+    @Column(name = "thumbnail_url") // Column name by default equals variable name
     @JsonProperty("thumbnail_url")
     private String thumbnailUrl;
 
     @Column(name = "broadcaster_name")
-    @JsonProperty("broadcaster_name")
+    @JsonProperty("broadcaster_name")  // used both in serialization and deserialization
+    // used in deserialization, here is used to accept different field names returned by twitch API
     @JsonAlias({ "user_name" })
     private String broadcasterName;
 

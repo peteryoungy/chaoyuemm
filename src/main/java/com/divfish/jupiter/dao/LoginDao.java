@@ -17,6 +17,8 @@ public class LoginDao {
         String name = "";
 
         try (Session session = sessionFactory.openSession()) {
+            
+            // select * from users where userid = "xxx"
             User user = session.get(User.class, userId);
             if(user != null && user.getPassword().equals((password))) {
                 name = user.getFirstName();
