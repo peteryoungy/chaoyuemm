@@ -1,5 +1,7 @@
 package com.divfish.jupiter.service;
 
+import com.divfish.jupiter.entity.config.TwitchToken;
+import com.divfish.jupiter.entity.config.YamlConfig;
 import com.divfish.jupiter.entity.db.Item;
 import com.divfish.jupiter.entity.db.ItemType;
 import com.divfish.jupiter.entity.response.Game;
@@ -12,9 +14,12 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.yaml.snakeyaml.Yaml;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.*;
@@ -22,8 +27,12 @@ import java.util.*;
 @Service
 public class GameService {
 
-    private static final String TOKEN = "Bearer a3edyv161elhgg24uotzlg9b7ildjc";
-    private static final String CLIENT_ID = "0pzufayc03cnmsyl88mtqfjohi753k";
+//    private static final String TOKEN = "Bearer n7qoo7c1ysa4rc2km9zvyubpfbkonj";
+//    private static final String CLIENT_ID = "0pzufayc03cnmsyl88mtqfjohi753k";
+    private YamlConfig yamlConfig;
+
+    private String TOKEN;
+    private String CLIENT_ID;
 
     private static final String TOP_GAME_URL = "https://api.twitch.tv/helix/games/top?first=%s";
     private static final String GAME_SEARCH_URL_TEMPLATE = "https://api.twitch.tv/helix/games?name=%s";
@@ -34,6 +43,15 @@ public class GameService {
     private static final String CLIP_SEARCH_URL_TEMPLATE = "https://api.twitch.tv/helix/clips?game_id=%s&first=%s";
     private static final String TWITCH_BASE_URL = "https://www.twitch.tv/";
     private static final int DEFAULT_SEARCH_LIMIT = 20;
+
+
+    @Autowired
+    public GameService(YamlConfig yamlConfig) {
+        this.yamlConfig = yamlConfig;
+        TOKEN = yamlConfig.getTwitchToken().getToken();
+        CLIENT_ID = yamlConfig.getTwitchToken().getClientId();
+    }
+
 
     // Build the request URL which will be used when calling Twitch APIs, e.g. https://api.twitch.tv/helix/games/top when trying to get top games.
     private String buildGameURL(String url, String gameName, int limit) {

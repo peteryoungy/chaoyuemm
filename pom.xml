@@ -19,6 +19,13 @@
 
     <dependencies>
 
+<!--        parse Yaml -->
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>1.21</version>
+        </dependency>
+
 <!--excrypted password-->
         <dependency>
             <groupId>commons-codec</groupId>
@@ -43,7 +50,7 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.25</version>
+            <version>8.0.27</version>
         </dependency>
 
         <!--  Apache HTTP client-->
