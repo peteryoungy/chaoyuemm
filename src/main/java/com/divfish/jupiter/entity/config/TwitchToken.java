@@ -5,15 +5,6 @@ public class TwitchToken {
     public String token;
     public String clientId;
 
-    public TwitchToken() {
-
-    }
-
-    public TwitchToken(String token, String clientId) {
-        this.token = token;
-        this.clientId = clientId;
-    }
-
     @Override
     public String toString() {
         return "TwitchToken{" +

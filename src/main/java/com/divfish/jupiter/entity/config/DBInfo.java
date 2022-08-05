@@ -6,16 +6,6 @@ public class DBInfo {
     public String username;
     public String password;
 
-    public DBInfo() {
-
-    }
-
-    public DBInfo(String rdsEndpoint, String username, String password) {
-        this.rdsEndpoint = rdsEndpoint;
-        this.username = username;
-        this.password = password;
-    }
-
     @Override
     public String toString() {
         return "DBInfo{" +

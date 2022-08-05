@@ -32,10 +32,7 @@ public class ApplicationConfig {
     @Bean(name = "dataSource")
     public DataSource dataSource(YamlConfig yamlConfig) {
 
-        // TODO: ADD ENDPOINTS, USERNAME PASSWORD
-//        String RDS_ENDPOINT = "rds-mysql-1.crelr6pvrmw6.us-east-2.rds.amazonaws.com";
-//        String USERNAME = "admin";
-//        String PASSWORD = "12345678Yy!";
+
 
 
         String RDS_ENDPOINT = yamlConfig.getDbInfo().getRds_endpoint();

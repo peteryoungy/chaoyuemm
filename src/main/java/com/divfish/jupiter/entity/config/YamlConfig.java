@@ -1,6 +1,6 @@
 package com.divfish.jupiter.entity.config;
 
-import org.springframework.context.annotation.Bean;
+
 import org.springframework.stereotype.Component;
 
 @Component
@@ -12,18 +12,19 @@ public class YamlConfig {
     public YamlConfig() {
     }
 
+    // note: outer class must have this single argument constructor in order to serialize yaml to object
     public YamlConfig(DBInfo dbInfo, TwitchToken twitchToken) {
         this.dbInfo = dbInfo;
         this.twitchToken = twitchToken;
     }
 
-    public YamlConfig(DBInfo dbInfo) {
-        this.dbInfo = dbInfo;
-    }
-
-    public YamlConfig(TwitchToken twitchToken) {
-        this.twitchToken = twitchToken;
-    }
+//    public YamlConfig(DBInfo dbInfo) {
+//        this.dbInfo = dbInfo;
+//    }
+//
+//    public YamlConfig(TwitchToken twitchToken) {
+//        this.twitchToken = twitchToken;
+//    }
 
     @Override
     public String toString() {

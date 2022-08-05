@@ -1,8 +1,13 @@
 ## Overview
 
-## PREP
+This is a Spring-based Twitch resources recommendation engine. 
 
-java version > 1.8.0
+- Designed and built a full-stack web application for users to search twitch resources (stream/video/clip) and get recommendations.
+- Built web frontend with React and Ant Design.
+- Implemented RESTful APIs using Java Servlets, retrieved real Twitch resources using Twitch API and utilized MySQL as relational database with Hibernate.
+- Deployed the service to Amazon EC2 for better stability.
 
-tomcat version > 9.0
+## Quick Start
+
+
 
