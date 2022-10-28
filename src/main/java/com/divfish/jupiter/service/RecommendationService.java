@@ -105,8 +105,8 @@ public class RecommendationService {
         Map<String, List<String>> favoriteGameIds;
 
 
-        favoriteItemIds = favoriteDao.getFavoriteItemIds(userId);
-        favoriteGameIds = favoriteDao.getFavoriteGameIds(favoriteItemIds);
+        favoriteItemIds = favoriteDao.getFavoriteItemIds(userId); // userid -> list of items ids
+        favoriteGameIds = favoriteDao.getFavoriteGameIds(favoriteItemIds); // list item ids -> list of game_ids by type
 
 
         for (Map.Entry<String, List<String>> entry : favoriteGameIds.entrySet()) {
