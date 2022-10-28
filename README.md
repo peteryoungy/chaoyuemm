@@ -6,7 +6,7 @@ Twitch+ is a full-stack web application for users to search Twitch resources (st
 
 ## Demo
 
-Click here to view our [website](http://ec2-18-218-51-231.us-east-2.compute.amazonaws.com).
+Click here to view our [website](http://3.16.215.32).
 
 ## Features
 
